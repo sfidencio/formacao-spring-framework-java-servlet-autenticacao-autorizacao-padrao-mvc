@@ -2,21 +2,55 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>gerenciador2</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>listaEmpresas.jsp</welcome-file>
+    <welcome-file>/listaEmpresas</welcome-file>
   </welcome-file-list>
-  <servlet>
-    <servlet-name>olaMundo2</servlet-name>
-    <servlet-class>br.com.alura.gerenciador.servlet.OlaMundoServlet2</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>olaMundo2</servlet-name>
-    <url-pattern>/olaMundo2</url-pattern>
-    <url-pattern>/olaMundo2-divertido</url-pattern>
-  </servlet-mapping>
+  
+  
+  <session-config>
+    <!-- 10 min - isso fara com que as sessoes sejam invalidadas com 10 minutos.-->
+    <!-- Só reforçando: é um timeout de desuso. No caso acima, o Tomcat só removerá a sessão se o usuário não ficar ativo por 10 minutos. -->
+    <session-timeout>10</session-timeout>
+</session-config> 
+
+<!-- Poderiamos criar filtros desta forma tambem, sem usar @Annotation na classe -->
+<!-- Utilizando a declaracao do filtro aqui, ao inves de annotation, vc mantem a ordem de execucao -->
+
+
+<filter>
+    <filter-name>AF</filter-name>
+    <filter-class>br.com.alura.gerenciador.servlet.mvc.AutorizacaoFilter</filter-class>
+</filter>
+
+<filter-mapping>
+    <filter-name>AF</filter-name>
+    <url-pattern>/entrada</url-pattern>
+</filter-mapping>
+
+
+<filter>
+    <filter-name>MF</filter-name>
+    <filter-class>br.com.alura.gerenciador.servlet.mvc.MonitoramentoFilter</filter-class>
+</filter>
+
+<filter-mapping>
+    <filter-name>MF</filter-name>
+    <url-pattern>/entrada</url-pattern>
+</filter-mapping>
+
+
+<filter>
+    <filter-name>CF</filter-name>
+    <filter-class>br.com.alura.gerenciador.servlet.mvc.ControladorUnificadoFilter</filter-class>
+</filter>
+
+<filter-mapping>
+    <filter-name>CF</filter-name>
+    <url-pattern>/entrada</url-pattern>
+</filter-mapping>
+
+
+
+
+  
+  
 </web-app>
