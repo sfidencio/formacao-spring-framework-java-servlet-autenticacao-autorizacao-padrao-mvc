@@ -1,8 +1,7 @@
 # formacao-spring-framework-java-servlet-autenticacao-autorizacao-padrao-mvc
-# Curso de Java Servlet: autênticação e autorização padrão MVC - Alura
+Curso de Java Servlet: autênticação e autorização padrão MVC - Alura
 
 
-Tela de Login
 ![image](https://user-images.githubusercontent.com/660615/171883837-d5159daa-27c4-4f6f-8476-0c86e4de3f72.png)
 
 Lista de Empresas
